@@ -33,3 +33,6 @@ git config −−global credential.helper 'cache −−timeout=3600'
 ```
 
 ## Qual a diferença entre git merge e git rebase?
+Git Merge - é uma operação não destrutiva. Ele pega o histórico das duas branches e os une. A vantagem é que mantém o histórico original intacto, porém em projetos com muitos desenvolvedores, o histórico pode ficar confusa 
+
+Git Rebase - move a base da branch de recurso para o final da branch de destino. A vantagem é que o histórico fica fácil de ler, porém ele reescreve o histórico.
