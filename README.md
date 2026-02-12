@@ -1,3 +1,6 @@
+![GitHub License](https://img.shields.io/github/license/mateusraffaelli/POO-ADS)
+
+
 # Atividades práticas da disciplina de Programação Orientada a Objetos
 
 > Repositório com as atividades práticas da disciplina de Programação Orientada a Objetos
