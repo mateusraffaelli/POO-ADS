@@ -15,10 +15,14 @@ public class Main {
                 IO.println("O argumento do losango precisa ser um número ímpar");
             }
             int colunas = Integer.parseInt(args[1]);
-            String mensagem = "*";
-            for (int i = 0; i < colunas; i++) {
-                IO.println(mensagem);
-                mensagem = mensagem + "*";
+            String mensagem1 = "*";
+            String mensagem2 = " ";
+            int j = colunas-2;
+            for (int i = 0; i < colunas-2; i++) {
+                IO.print(mensagem2.repeat(j));
+                IO.print(mensagem1.repeat(i+2));
+                IO.println("");
+                j--;
             }
         }else if (args[0].equals("retangulo")&& args.length == 3){
 
