@@ -70,8 +70,9 @@ public class Horario {
         return String.format("%02d:%02d:%02d", hora,minuto,segundo);
     }
 
-    public String converteParaExtenso(int valor){
+    private String converteParaExtenso(int valor){
         return switch (valor){
+            case 0 -> "zero";
             case 1 -> "um";
             case 2 -> "dois";
             case 3 -> "três";
@@ -99,17 +100,22 @@ public class Horario {
         };
     }
 
-    public String imprimePorExtenso(){
-
-        if (converteParaExtenso(this.hora) == ""){
-            int desena = (this.hora/10)*10;
-            int unidade = this.hora%10;
+    private String verificaNumero(int valor){
+        if (converteParaExtenso(valor).isEmpty()){
+            int desena = (valor/10)*10;
+            int unidade = valor%10;
+            return converteParaExtenso(desena) + " e " + converteParaExtenso(unidade);
+        }else {
+            return converteParaExtenso(valor);
         }
+    }
 
-        String hEx = converteParaExtenso(this.hora);
-        String mEx = converteParaExtenso(this.minuto);
-        String sEx = converteParaExtenso(this.minuto);
-        return hEx + " " + mEx + " " + sEx;
+
+    public String imprimePorExtenso(){
+        String hEx = verificaNumero(this.hora);
+        String mEx = verificaNumero(this.minuto);
+        String sEx = verificaNumero(this.segundo);
+        return hEx + " horas, " + mEx + " minutos, e " + sEx + " segundos";
     }
 
 
