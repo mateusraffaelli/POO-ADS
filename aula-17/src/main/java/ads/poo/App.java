@@ -13,8 +13,10 @@ public class App {
 
         Livro livro1 = new Livro("10", "Brás Cubas", "Machado de Assis", 1881);
         Livro livro2 = new Livro("41", "Diário de um Banana", "Jeff Kinney", 2007);
+        Livro livro3 = new Livro("42", "Diário de um Banana", "Jeff Kinney", 2007);
         mapa.put("10", livro1);
         mapa.put("41", livro2);
+        mapa.put("42",livro3);
     }
 
     void menu(int opcao){
@@ -44,14 +46,57 @@ public class App {
     }
 
     void listarLivrosAno(){
-        for (Livro livro : mapa.values()){ // Terminar
-            System.out.println();
+        IO.println("Digite o ano que você deseja buscar: ");
+        int anoBuscado = scanner.nextInt();
+
+        for (Livro livro : mapa.values()){
+            if (livro.getAno() == anoBuscado){
+                System.out.println(livro);
+            }
         }
     }
 
     void alterarDados(){
+        IO.println("Digite o ISBN do livro: ");
+        String chave = scanner.next();
 
+        if (mapa.containsKey(chave)){
+            int opcao;
+            do {
+                IO.println("Digite o dado que você quer alterar:\n" +
+                        " 1 - Título\n" +
+                        " 2 - Autor\n" +
+                        " 3 - Ano de lançamento\n" +
+                        " 4 - Sair\n" +
+                        "Digite uma opção: ");
+                opcao = scanner.nextInt();
+
+                IO.println("Digite o novo dado:");
+
+                switch (opcao){
+                    case 1 -> {
+                        String novoTitulo = scanner.next();
+                        mapa.get(chave).setTitulo(novoTitulo);
+                    }
+                    case 2 -> {
+                        String novoAutor = scanner.next();
+                        mapa.get(chave).setAutor(novoAutor);
+                    }
+                    case 3 -> {
+                        int novoAno = scanner.nextInt();
+                        mapa.get(chave).setAno(novoAno);
+                    }
+                    default -> IO.println("Número inválido\n");
+                }
+            }while (opcao != 4);
+
+
+
+        }else {
+            IO.println("Essa chave não existe");
+        }
     }
+
 
     static void main() {
         App app = new App();
