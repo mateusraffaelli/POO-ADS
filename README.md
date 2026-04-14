@@ -19,3 +19,5 @@
 - [Aula 10](/aula-10) - Conceitos iniciais sobre orientação a objetos
 - [Aula 11](/aula-11) - Trabalhando com classes, objetos, métodos, atributos e modificadores de acesso
 - [Aula 15](/aula-15) - Trabalhando com listas ArrayList e loop for each 
+- [Aula 17](/aula-17) - Trabalhando com HashMap, conjuntos e mapas
+- [Aula 18](/aula-18) - Associação entre classes e diagrama de classes UML
