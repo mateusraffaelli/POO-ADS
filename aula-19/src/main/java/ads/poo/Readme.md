@@ -1,5 +1,3 @@
-# 
-
 ```mermaid
 classDiagram
     direction LR
