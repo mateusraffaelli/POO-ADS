@@ -40,19 +40,22 @@ public class Main {
 //        draw.setFontSize(30);
 //
 //
-//        for (int i = 0; i < 10; i++) {
-//            draw.clear();
-//            draw.text(400,400, "" + i);
-//            draw.show();
-//            TimeUnit.SECONDS.sleep(1);
-//        }
+        for (int i = 0; i < 10; i++) {
+            draw.clear();
+            draw.text(400,400, "" + i, 50);
+            draw.show();
+            TimeUnit.SECONDS.sleep(1);
+        }
 
         draw.setPenColor(Color.RED);
         draw.filledCircle(300,500,100);
         draw.filledCircle(500,500,100);
-        double[] x = {300,350,350,500};
-        double[] y = {500,250,250,500};
+        draw.filledCircle(400,420,100);
+        double[] x = {230,400,400,570};
+        double[] y = {430,250,250,430};
         draw.filledPolygon(x,y);
+        draw.setPenColor(Color.BLACK);
+        draw.text(400,420, "Julie", 50);
         draw.show();
 
     }
