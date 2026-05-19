@@ -20,4 +20,8 @@ public class SemFio extends Telefone{
                 ", distanciaOperacao=" + distanciaOperacao +
                 '}';
     }
+
+    public double getFrequencia(){
+        return this.frequencia;
+    }
 }

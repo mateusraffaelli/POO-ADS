@@ -25,4 +25,8 @@ public class Telefone {
                 ", dimensao=" + dimensao +
                 '}';
     }
+
+    public String getModelo(){
+        return this.modelo;
+    }
 }
