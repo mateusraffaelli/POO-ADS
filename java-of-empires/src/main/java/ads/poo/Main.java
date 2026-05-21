@@ -1,15 +1,17 @@
 package ads.poo;
 
+import java.util.ArrayList;
+
 public class Main {
     static void main(String[] args) {
         Aldeao aldeao = new Aldeao();
         Arqueiro arqueiro = new Arqueiro();
         Cavaleiro cavaleiro = new Cavaleiro();
 
-        Personagem[] personagens = new Personagem[3];
-        personagens[0] = aldeao;
-        personagens[1] = arqueiro;
-        personagens[2] = cavaleiro;
+        ArrayList<Personagem> personagens = new ArrayList<>();
+        personagens.add(aldeao);
+        personagens.add(arqueiro);
+        personagens.add(cavaleiro);
 
         for (Personagem p : personagens){
             System.out.println(p);
