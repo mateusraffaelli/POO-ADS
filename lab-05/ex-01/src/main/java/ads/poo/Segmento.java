@@ -1,18 +1,29 @@
 package ads.poo;
 
-import java.awt.*;
+import edu.princeton.cs.algs4.Draw;
+import java.awt.Color;
 
 public class Segmento {
+    private double[] x;
+    private double[] y;
+    private Color corAtiva;
+    private Color corInativa;
+    private boolean ligado;
 
-    public Segmento(double[] x, double[] y, Color cor) {
-
+    public Segmento(double[] x, double[] y, Color corAtiva, Color corInativa) {
+        this.x = x;
+        this.y = y;
+        this.corAtiva = corAtiva;
+        this.corInativa = corInativa;
+        this.ligado = false;
     }
 
-    public boolean ligar(){
-        return true;
+    public void desenhar(Draw desenho) {
+        desenho.setPenColor(ligado ? corAtiva : corInativa);
+        desenho.filledPolygon(x, y);
     }
 
-    public boolean desligar(){
-        return false;
-    }
+    public void ligar()    { this.ligado = true;  }
+    public void desligar() { this.ligado = false; }
+    public boolean estaLigado() { return ligado; }
 }
