@@ -74,10 +74,19 @@ public class Relogio {
 
     public void rodar() throws InterruptedException {
         while (true) {
-            LocalTime agora = LocalTime.now();
-            horas = agora.getHour();
-            minutos = agora.getMinute();
-            segundos = agora.getSecond();
+            segundos++;
+            if (segundos > 59){
+                segundos = 0;
+                minutos++;
+            }
+            if (minutos > 59){
+                minutos = 0;
+                horas++;
+            }
+            if (horas > 23){
+                horas = 0;
+            }
+
             atualizarDisplays();
 
             desenho.clear(Draw.BLACK);

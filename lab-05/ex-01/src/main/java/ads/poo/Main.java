@@ -4,5 +4,8 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Relogio relogio = new Relogio();
         relogio.rodar();
+        Relogio relogioManual = new Relogio(22, 56, 49);
+        relogioManual.rodar();
+
     }
 }

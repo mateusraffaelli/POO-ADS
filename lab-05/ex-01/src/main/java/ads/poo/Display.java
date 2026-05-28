@@ -35,7 +35,7 @@ public class Display {
     }
 
     public void adicionar(int numero){
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i <= 6; i++) {
             segmentos.get(i).desligar();
         }
 
@@ -50,7 +50,7 @@ public class Display {
             }
             case 1 -> {
                 segmentos.get(1).ligar();
-                segmentos.get(1).ligar();
+                segmentos.get(2).ligar();
             }
             case 2 ->{
                 segmentos.get(0).ligar();
