@@ -3,9 +3,12 @@ package ads.poo;
 import edu.princeton.cs.algs4.Draw;
 import edu.princeton.cs.algs4.DrawListener;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class App implements DrawListener {
+    private static ArrayList<CartaGrafica> cartas = new ArrayList<>();
+
     private Draw draw;
 
     public App(){
@@ -17,22 +20,20 @@ public class App implements DrawListener {
         this.draw.setDefaultCloseOperation(3);
         this.draw.enableDoubleBuffering();
         this.draw.addListener(this);
+
+        cartas.add(new CartaGrafica(Valor.DAMA, Naipe.COPAS, 100, 100));
+
     }
 
     @Override
     public void mouseClicked(double x, double y) {
-        String valores = "123456789qjk";
-        String naipes = "oecp";
-        Random r = new Random();
+        CartaGrafica cartaGrafica = new CartaGrafica(x, y, Valor.AS, Naipe.OUROS);
 
-        String carta = String.format("cartas/");
+        cartas.getFirst().desenhar(draw);
 
-        this.draw.picture(x,y, "cartas/1p.png");
-        this.draw.show();
     }
 
     static void main(String[] args) {
         App app = new App();
-
     }
 }
