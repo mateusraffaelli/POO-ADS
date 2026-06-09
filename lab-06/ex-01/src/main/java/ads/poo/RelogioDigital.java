@@ -6,10 +6,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class RelogioDigital extends Relogio{
-    private ArrayList<Display> displays = new ArrayList<>();
-    private int horas;
-    private int minutos;
-    private int segundos;
+    private ArrayList<Display> displays;
 
     private Draw desenho;
     private static final double FATOR  = 60;
@@ -21,12 +18,9 @@ public class RelogioDigital extends Relogio{
         super.inicializar();
     }
 
-    public RelogioDigital(int horas, int minutos, int segundos) {
-        super(horas, minutos, segundos);
-        super.inicializar();
-    }
-
-    public void inicializar(){
+    @Override
+    protected void inicializar(){
+        this.displays = new ArrayList<>();
         super.inicializar();
 
         desenho = new Draw();
@@ -49,6 +43,7 @@ public class RelogioDigital extends Relogio{
         }
     }
 
+
     public void atualizarDisplays(){
         displays.get(0).adicionar(horas/10);
         displays.get(1).adicionar(horas%10);
@@ -65,8 +60,15 @@ public class RelogioDigital extends Relogio{
         desenho.filledCircle(x, y + FATOR * 1.4, FATOR * 0.12);
     }
 
+    @Override
     public void rodar() throws InterruptedException {
+
+
         while(true) {
+            super.rodar();
+
+            atualizarDisplays();
+
             desenho.clear(Draw.BLACK);
             for (Display d : displays) d.desenhar(desenho);
             desenharDoisPontos(30 + ESPACO * 2 + 10, 60);
