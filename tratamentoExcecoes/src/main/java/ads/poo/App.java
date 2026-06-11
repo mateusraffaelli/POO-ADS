@@ -4,12 +4,16 @@ import edu.princeton.cs.algs4.Draw;
 import edu.princeton.cs.algs4.DrawListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class App implements DrawListener {
     private static ArrayList<CartaGrafica> cartas = new ArrayList<>();
 
     private Draw draw;
+    ArrayList<Objects> elementos = new ArrayList<>();
+    DadoGrafico dado = new DadoGrafico(300, 300);
 
     public App(){
         this.draw = new Draw();
@@ -24,18 +28,29 @@ public class App implements DrawListener {
         cartas.add(new CartaGrafica(Valor.AS, Naipe.COPAS, 100, 100));
         cartas.add(new CartaGrafica(Valor.CINCO, Naipe.COPAS, 200, 200));
 
+
+        for(CartaGrafica c : cartas){
+            c.desenhar(this.draw);
+        }
+
+        draw.show();
+
     }
+
+
+
 
     @Override
     public void mouseClicked(double x, double y) {
-        if (x == cartas.get(0).x && y == cartas.get(0).y){
-            cartas.get(0).clicouDentro(draw);
+        if (cartas.get(0).clicouDentro(x,y)){
+            cartas.get(0).desenhar(this.draw);
+            draw.show();
+        }else {
+            System.out.println(Arrays.toString(dado.est));
+            dado.clicouDentro(x,y);
+            dado.desenhar(this.draw);
+            draw.show();
         }
-
-        for (int i = 0; i < 2; i++) {
-            cartas.get(i).desenhar(draw);
-        }
-
 
     }
 
