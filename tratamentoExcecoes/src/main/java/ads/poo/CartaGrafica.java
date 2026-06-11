@@ -3,8 +3,8 @@ package ads.poo;
 import edu.princeton.cs.algs4.Draw;
 
 public class CartaGrafica extends Carta {
-    private double x;
-    private double y;
+    protected double x;
+    protected double y;
 
     public CartaGrafica(Valor valor, Naipe naipe, double x, double y) {
         super(valor, naipe);
@@ -17,7 +17,8 @@ public class CartaGrafica extends Carta {
         d.show();
     }
 
-    public void clicouDentro(){
-
+    public void clicouDentro(Draw d){
+        d.picture(x,y, "cartas/cartas/" + "fundo" + "v" +".png");
+        d.show();
     }
 }

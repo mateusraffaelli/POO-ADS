@@ -21,15 +21,21 @@ public class App implements DrawListener {
         this.draw.enableDoubleBuffering();
         this.draw.addListener(this);
 
-        cartas.add(new CartaGrafica(Valor.DAMA, Naipe.COPAS, 100, 100));
+        cartas.add(new CartaGrafica(Valor.AS, Naipe.COPAS, 100, 100));
+        cartas.add(new CartaGrafica(Valor.CINCO, Naipe.COPAS, 200, 200));
 
     }
 
     @Override
     public void mouseClicked(double x, double y) {
-        CartaGrafica cartaGrafica = new CartaGrafica(x, y, Valor.AS, Naipe.OUROS);
+        if (x == cartas.get(0).x && y == cartas.get(0).y){
+            cartas.get(0).clicouDentro(draw);
+        }
 
-        cartas.getFirst().desenhar(draw);
+        for (int i = 0; i < 2; i++) {
+            cartas.get(i).desenhar(draw);
+        }
+
 
     }
 
