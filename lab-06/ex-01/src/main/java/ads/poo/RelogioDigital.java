@@ -2,13 +2,11 @@ package ads.poo;
 
 import edu.princeton.cs.algs4.Draw;
 import java.awt.*;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class RelogioDigital extends Relogio{
     private ArrayList<Display> displays;
 
-    private Draw desenho;
     private static final double FATOR  = 60;
     private static final double ESPACO = FATOR * 1.6;
     private static final Color CLARA  = Draw.GREEN;
@@ -22,8 +20,26 @@ public class RelogioDigital extends Relogio{
     protected void inicializar(){
         this.displays = new ArrayList<>();
         super.inicializar();
+    }
 
-        desenho = new Draw();
+
+    public void atualizarDisplays(){
+        displays.get(0).adicionar(horas/10);
+        displays.get(1).adicionar(horas%10);
+        displays.get(2).adicionar(minutos/10);
+        displays.get(3).adicionar(minutos%10);
+        displays.get(4).adicionar(segundos/10);
+        displays.get(5).adicionar(segundos%10);
+
+    }
+
+    @Override
+    public void rodar(Draw desenho) throws InterruptedException {
+
+        super.rodar();
+
+        atualizarDisplays();
+
         desenho.setCanvasSize(800, 300);
         desenho.setXscale(0, 800);
         desenho.setYscale(0, 300);
@@ -41,41 +57,21 @@ public class RelogioDigital extends Relogio{
         for (double x : posX) {
             displays.add(new Display(x, 60, FATOR, CLARA, ESCURA));
         }
-    }
-
-
-    public void atualizarDisplays(){
-        displays.get(0).adicionar(horas/10);
-        displays.get(1).adicionar(horas%10);
-        displays.get(2).adicionar(minutos/10);
-        displays.get(3).adicionar(minutos%10);
-        displays.get(4).adicionar(segundos/10);
-        displays.get(5).adicionar(segundos%10);
-
-    }
-
-    private void desenharDoisPontos(double x, double y) {
-        desenho.setPenColor(CLARA);
-        desenho.filledCircle(x, y + FATOR * 0.7, FATOR * 0.12);
-        desenho.filledCircle(x, y + FATOR * 1.4, FATOR * 0.12);
-    }
-
-    @Override
-    public void rodar() throws InterruptedException {
-
-
-        while(true) {
-            super.rodar();
-
-            atualizarDisplays();
 
             desenho.clear(Draw.BLACK);
             for (Display d : displays) d.desenhar(desenho);
-            desenharDoisPontos(30 + ESPACO * 2 + 10, 60);
-            desenharDoisPontos(30 + ESPACO * 4 + 40, 60);
+
+            desenho.setPenColor(CLARA);
+            desenho.filledCircle(30 + ESPACO * 2 + 10, 60 + FATOR * 0.7, FATOR * 0.12);
+            desenho.filledCircle(30 + ESPACO * 2 + 10, 60 + FATOR * 1.4, FATOR * 0.12);
+
+            desenho.setPenColor(CLARA);
+            desenho.filledCircle(30 + ESPACO * 4 + 40, 60 + FATOR * 0.7, FATOR * 0.12);
+            desenho.filledCircle(30 + ESPACO * 4 + 40, 60 + FATOR * 1.4, FATOR * 0.12);
+
             desenho.show();
 
             Thread.sleep(1000);
-        }
+
     }
 }

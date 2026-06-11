@@ -51,43 +51,40 @@ public class RelogioAnalogico extends Relogio {
     }
 
     @Override
-    public void rodar() throws InterruptedException {
-        while (true){
-            super.rodar();
-            draw.clear(corFundo);
-            draw.setPenColor(corRelogio);
-            draw.filledCircle(centroX, centroY, raioRelogio);
-            draw.setPenColor(corTracos);
-            draw.setPenRadius(espessuraTraco);
+    public void rodar(Draw desenho) throws InterruptedException {
+        super.rodar();
+        draw.clear(corFundo);
+        draw.setPenColor(corRelogio);
+        draw.filledCircle(centroX, centroY, raioRelogio);
+        draw.setPenColor(corTracos);
+        draw.setPenRadius(espessuraTraco);
 
-            for (int traco = 0; traco < tracosDasHoras; traco++) {
-                double angulo = Math.toRadians(anguloEntreTracos * traco);
-                draw.line(
-                        centroX + raioFimTraco * Math.sin(angulo), centroY + raioFimTraco * Math.cos(angulo),
-                        centroX + raioInicioTraco * Math.sin(angulo), centroY + raioInicioTraco * Math.cos(angulo)
-                );
-            }
-
-            double anguloHora = Math.toRadians(anguloEntreTracos * horas); // 360° / 12 = 30° por hora
-            double anguloMinuto = Math.toRadians(6 * minutos); // 360° / 60 = 6° por minuto
-            double anguloSegundo = Math.toRadians(6 * segundos); // 360° / 60 = 6° por segundo
-
-            // Ponteiro das horas
-            draw.line(centroX, centroY, centroX + comprimentoPonteiroHora * Math.sin(anguloHora), centroY +
-                    comprimentoPonteiroHora * Math.cos(anguloHora));
-
-            // Ponteiro dos minutos
-            draw.line(centroX, centroY, centroX + comprimentoPonteiroSegundo * Math.sin(anguloMinuto), centroY +
-                    comprimentoPonteiroSegundo * Math.cos(anguloMinuto));
-
-            // Ponteiro dos segundos
-            draw.setPenColor(corSegundos);
-            draw.setPenRadius(espessuraSegundo);
-            draw.line(centroX, centroY, centroX + comprimentoPonteiroSegundo * Math.sin(anguloSegundo), centroY +
-                    comprimentoPonteiroSegundo * Math.cos(anguloSegundo));
-            draw.show();
-            TimeUnit.SECONDS.sleep(1);
+        for (int traco = 0; traco < tracosDasHoras; traco++) {
+            double angulo = Math.toRadians(anguloEntreTracos * traco);
+            draw.line(
+                    centroX + raioFimTraco * Math.sin(angulo), centroY + raioFimTraco * Math.cos(angulo),
+                    centroX + raioInicioTraco * Math.sin(angulo), centroY + raioInicioTraco * Math.cos(angulo)
+            );
         }
 
+        double anguloHora = Math.toRadians(anguloEntreTracos * horas); // 360° / 12 = 30° por hora
+        double anguloMinuto = Math.toRadians(6 * minutos); // 360° / 60 = 6° por minuto
+        double anguloSegundo = Math.toRadians(6 * segundos); // 360° / 60 = 6° por segundo
+
+        // Ponteiro das horas
+        draw.line(centroX, centroY, centroX + comprimentoPonteiroHora * Math.sin(anguloHora), centroY +
+                comprimentoPonteiroHora * Math.cos(anguloHora));
+
+        // Ponteiro dos minutos
+        draw.line(centroX, centroY, centroX + comprimentoPonteiroSegundo * Math.sin(anguloMinuto), centroY +
+                comprimentoPonteiroSegundo * Math.cos(anguloMinuto));
+
+        // Ponteiro dos segundos
+        draw.setPenColor(corSegundos);
+        draw.setPenRadius(espessuraSegundo);
+        draw.line(centroX, centroY, centroX + comprimentoPonteiroSegundo * Math.sin(anguloSegundo), centroY +
+                comprimentoPonteiroSegundo * Math.cos(anguloSegundo));
+        draw.show();
+        TimeUnit.SECONDS.sleep(1);
     }
 }

@@ -26,5 +26,4 @@ public class Segmento {
 
     public void ligar()    { this.ligado = true;  }
     public void desligar() { this.ligado = false; }
-    public boolean estaLigado() { return ligado; }
 }

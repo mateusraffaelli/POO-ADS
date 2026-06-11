@@ -1,5 +1,7 @@
 package ads.poo;
 
+import edu.princeton.cs.algs4.Draw;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -9,12 +11,12 @@ public class Relogio {
     protected int minutos;
     protected int segundos;
 
-    public Relogio(){
+    public Relogio() {
         this.horario = LocalTime.now();
         inicializar();
     }
 
-    public Relogio(int hora, int minuto, int segundo){
+    public Relogio(int hora, int minuto, int segundo) {
         this.horario = LocalTime.of(hora, minuto, segundo);
         inicializar();
     }
@@ -25,19 +27,4 @@ public class Relogio {
         this.segundos = horario.getSecond();
     }
 
-    public void rodar() throws InterruptedException {
-        segundos++;
-        if (segundos > 59) {
-            segundos = 0;
-            minutos++;
-        }
-        if (minutos > 59) {
-            minutos = 0;
-            horas++;
-        }
-        if (horas > 23) {
-            horas = 0;
-
-        }
-    }
 }
